@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archives du Football</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #f1f5f9;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+            background-color: #0b0e14;
+        }
+
+        .wrapper {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            background: rgba(30, 41, 59, 0.4);
+            margin-top: 20px;
+        }
+
+        h1 {
+            font-size: 2.3rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #38bdf8;
+            text-shadow: 0 0 15px rgba(56, 189, 248, 0.35);
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #94a3b8;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        /* Grille pour les 2 emplacements photo */
+        .grille-photos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin-bottom: 35px;
+        }
+
+        .cadre-photo {
+            background: rgba(11, 14, 20, 0.8);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .cadre-photo:hover {
+            transform: translateY(-4px);
+            border-color: #38bdf8;
+        }
+
+        .cadre-photo img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            background-color: #000;
+        }
+
+        .legende-photo {
+            padding: 10px;
+            font-size: 0.9rem;
+            color: #38bdf8;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Zone Newsletter */
+        .zone-newsletter {
+            background: rgba(11, 14, 20, 0.75);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .zone-newsletter h2 {
+            color: #38bdf8;
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            margin: 0 0 10px 0;
+        }
+
+        .form-newsletter {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .form-newsletter input {
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            background: #1e293b;
+            color: white;
+            font-size: 1rem;
+            min-width: 240px;
+            outline: none;
+        }
+
+        .form-newsletter input:focus {
+            border-color: #38bdf8;
+        }
+
+        .btn-valider {
+            padding: 12px 24px;
+            background: #38bdf8;
+            color: #0b0e14;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: all 0.2s ease;
+        }
+
+        .btn-valider:hover {
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+            opacity: 0.9;
+        }
+
+        #message-merci {
+            display: none;
+            margin-top: 15px;
+            color: #4ade80;
+            font-weight: bold;
+            font-size: 1.05rem;
+        }
+
+        .btn-retour {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #1e293b;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .btn-retour:hover {
+            background: #334155;
+            border-color: #38bdf8;
+            color: #38bdf8;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <h1>Newsletter</h1>
+        <p>Bienvenue sur notre newsletter, nous vous remercions d'avance pour votre fidélité,</p>
+
+        <!-- 2 EMPLACEMENTS PHOTO -->
+        <div class="grille-photos"> 
+          <div class="cadre-photo"> 
+            <img src="photo3.jpg" alt="Document confidentiel 01">
+            <div class="legende-photo"></div> 
+         
+          </div> 
+          <div class="cadre-photo">
+            
+            <img src="photo3.jpg" alt="Document confidentiel 02"> 
+            <div class="legende-photo"></div> 
+          </div> 
+        </div>
+
+        <!-- INSCRIPTION NEWSLETTER -->
+        <div class="zone-newsletter">
+            <h2>📩 Inscription à la Newsletter</h2>
+            <p style="font-size: 0.95rem; margin-bottom: 15px;">Recevez directement les prochaines révélations secrètes</p>
+            <form class="form-newsletter" onsubmit="confirmerInscription(event)">
+                <input type="email" id="emailInput" placeholder="Votre adresse email..." required>
+                <button type="submit" class="btn-valider">S'inscrire</button>
+            </form>
+            <div id="message-merci">✅ Merci pour votre inscription ! Vous êtes bien enregistré dans les archives.</div>
+        </div>
+
+        <!-- BOUTON DE RETOUR VERS LA PREMIÈRE PAGE -->
+        <a href="page un.html" class="btn-retour">⬅ Retour à la Galerie</a>
+    </div>
+
+    <script>
+        function confirmerInscription(event) {
+            event.preventDefault();
+            const message = document.getElementById('message-merci');
+            const champEmail = document.getElementById('emailInput');
+            
+            message.style.display = 'block';
+            champEmail.value = '';
+        }
+    </script>
+
+</body>
+</html>
